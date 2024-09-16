@@ -5,35 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>form 2.0</title>
+    <title>GDSC FEEDBACK FORM</title>
 </head>
 <body>
 
     <div class="outer-box">
         <div class="inner-box">
             <div class="header">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsRuTNtthKhhjw3Hi6ulQ9S5dW11_UxaHQAIBKgUI3j65pM-JR7AbE1Ej8J8bONLKHL-Q&usqp=CAU" alt="">
-            </div>
+                <img src="https://media.licdn.com/dms/image/C4D22AQHaCk8jpOycUA/feedshare-shrink_2048_1536/0/1643136630389?e=1699488000&v=beta&t=Z7jp-CMJMgoLY72d5RdM7phsvqQkvy-AXJKs2r0dQpA" alt="">
+               
+                 
+                 <br><br>
+        </div>
                
             <div class="form">
-             <form  action="https://formspree.io/f/mbjvqkae"
-             method="POST">
-        
-                <input type="text" name="username" placeholder="Name" required autocomplete="off"><br>
-                 <input type="text number"  name="number" placeholder="Number" required><br>
-                 <input type="email" name="email" placeholder="Email"  required><br>
-                <textarea id="area" name="feedback"  placeholder="Feedback" rows="4" cols="45" required> </textarea> <br><br>
-                <input class="hello" type="submit" value="Submit">
+              <form
+              name="submit-to-google-sheet" 
+              method="POST"
+            >
+
+               <input type="text" name="Username" placeholder="Name" required autocomplete="off"><br>
+                 <input type=" number"  name="Number" placeholder="Number" required autocomplete="off"><br>
+                 <input type="email" class="email" name="Email" placeholder="Email"  required  autocomplete="off"><br>
+                <textarea class="hi" id="area" name="Feedback"  placeholder="write your feedback here" rows="6" cols="45" required> </textarea> <br><br>
+                <input class="hello message" onclick="showAlert()" name="submit"  type="submit" value="Submit">
  
              </form>
-            </div>
+            </div> 
+            <script>
+              const scriptURL = 'https://script.google.com/macros/s/AKfycbzZY0i9InCpfmqMs1NyGPolE34QuhWN4h9TRVpDyPuwn_BhdinepuW1QE9ngYCaUp1T/exec'
+              const form = document.forms['submit-to-google-sheet']
 
-           
-                                 
-
-             
+              function showAlert(){
+                 alert("Submitted Successfully");
+              }
+            
+              form.addEventListener('submit', e => {
+                e.preventDefault()
+                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                  .then(response => console.log('Success!', response))
+                  .catch(error => console.error('Error!', error.message))
+              })
+            </script>
+            
         </div>
+
+        
     </div>
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+</div>
+
+    </div>
+    
     
 </body>
 </html>
